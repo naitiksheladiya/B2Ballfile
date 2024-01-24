@@ -1,0 +1,9 @@
+.wrap-login100 {
+    width: 100%;
+    background: #b1b1b1 !important;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    flex-direction: row-reverse;
+}
