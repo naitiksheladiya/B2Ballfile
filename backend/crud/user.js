@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const userschema = mongoose.Schema({
-      fastname: { type: String, require: true },
-      lastname: { type: String, require: true },
+      fname: { type: String, require: true },
+      lname: { type: String, require: true },
       email: { type: String, require: true },
-      phonenumber: { type: Number, require: true },
+      phone: { type: Number, require: true },
       Company: { type: String, require: true },
       address: { type: String, require: true },
       pincode: { type: Number, require: true },
@@ -12,8 +12,8 @@ const userschema = mongoose.Schema({
       statee: { type: String, require: true },
       country: { type: String, require: true },
       password: { type: String, require: true },
-      confrompassword: { type: String, require: true },
-      createdata: {}
+      confirmPassword: { type: String, require: true },
+      createdata: { type: Date, require: Date.now() }
 })
 
 const model = mongoose.model('registration', userschema)
@@ -24,7 +24,7 @@ const adddata = async (data) => {
             const userdata = new model(data)
             const asd = await userdata.save()
             console.log(asd)
-            return ("data  succesfully")
+            return (asd)
       } catch (error) {
             console.log(error)
             return (error)
