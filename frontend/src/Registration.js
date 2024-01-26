@@ -38,7 +38,9 @@ export default function Registration() {
         .matches(/^\d{10}$/, 'Contact number must be a valid 10-digit number'),
       Company: Yup.string().required("REQUIRED!"),
       address: Yup.string().required(" REQUIRED!"),
+      pincode: Yup.string().required("REQUIRED!"),
       city: Yup.string().required("REQUIRED!"),
+      country: Yup.string().required("REQUIRED!"),
       statee: Yup.string().required("REQUIRED!"),
       password: Yup.string()
         .min(6, "Minimum 6 characters")
@@ -156,6 +158,9 @@ export default function Registration() {
                       />
                       <span className="focus-input100"></span>
                     </div>
+                    {Formik.errors.pincode && Formik.touched.pincode && (
+                      <p className='error_massage'>{Formik.errors.pincode}</p>
+                    )}
 
                   </div>
 
@@ -191,6 +196,9 @@ export default function Registration() {
                       </select>
                       <span className="focus-input100"></span>
                     </div>
+                    {Formik.errors.country && Formik.touched.country && (
+                      <p className='error_massage'>{Formik.errors.country}</p>
+                    )}
                   </div>
                 </div>
 

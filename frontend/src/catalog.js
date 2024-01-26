@@ -100,9 +100,6 @@ export default function Catalog() {
                             </select>
                         </div>
 
-                        <div>
-                            <input type="image" />
-                        </div>
 
                         <div className="container-login100-form-btn">
                             <button className="login100-form-btn_confrom01 subtext">
