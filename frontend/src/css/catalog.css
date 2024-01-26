@@ -3,6 +3,12 @@
      margin-top: 50px !important;
  }
 
+ .ok {
+     border: 1px solid black;
+     margin-left: 10px;
+     padding: 2px;
+ }
+
  .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
      border-color: var(--ck-color-base-border);
      height: 120px;
