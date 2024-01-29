@@ -109,14 +109,14 @@ export default function Catalog() {
                         </div>
 
                         <div className='wrap-input100 validate-input'>
-                            <label htmlFor="color">COLOR : </label>
-                            <select id="color" name="color" onChange={handleColorChange} value={selectedColor}>
+                            <select className="input100" id="color" name="color" onChange={handleColorChange} value={selectedColor}>
                                 <option value="">Select a color</option>
                                 <option value="RED">RED</option>
                                 <option value="BLUE">BLUE</option>
                                 <option value="GREEN">GREEN</option>
                                 {/* Add more colors as needed */}
                             </select>
+                            <span className="focus-input100"></span>
                         </div>
                         <div>
                             {/* <p>Selected Color</p> */}
@@ -128,13 +128,13 @@ export default function Catalog() {
                         </div>
 
                         <div className='wrap-input100 validate-input'>
-                            <label htmlFor="image">UPLOAD IMAGE : </label>
-                            <input type="file" id="image" name="image" accept="image/*" onChange={handleImageChange} />
+                            <input type="file" className="input100" id="image" name="image" accept="image/*" onChange={handleImageChange} />
+                            <span className="focus-input100"></span>
                         </div>
 
                         {imageUrl && (
-                            <div className='image-preview'>
-                                <img src={imageUrl} alt='Selected' />
+                            <div className='image-preview '>
+                                <img src={imageUrl} className='imagesize' alt='Selected' />
                             </div>
                         )}
 
