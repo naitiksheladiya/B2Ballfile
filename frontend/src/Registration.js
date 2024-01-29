@@ -50,7 +50,6 @@ export default function Registration() {
         .required("REQUIRED!")
     }),
     onSubmit: values => {
-      toast(" successfully")
       console.log(values)
       axios.post('http://localhost:8080/registration', values)
         .then((response) => {
