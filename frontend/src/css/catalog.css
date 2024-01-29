@@ -9,6 +9,20 @@
      padding: 2px;
  }
 
+ .selected-categories {
+     list-style-type: none;
+ }
+
+ .lidecore {
+     border: 2px solid gray;
+     font-size: 17px;
+     display: inline-block;
+     margin-right: 10px;
+     padding: 5px;
+     padding: 5px;
+     border-radius: 7px;
+ }
+
  .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
      border-color: var(--ck-color-base-border);
      height: 120px;
