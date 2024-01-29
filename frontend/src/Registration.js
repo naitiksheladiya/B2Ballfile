@@ -28,7 +28,8 @@ export default function Registration() {
       statee: "",
       country: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      createdate: Date()
     },
     validationSchema: Yup.object({
       fname: Yup.string().required(" REQUIRED!"),
@@ -49,12 +50,13 @@ export default function Registration() {
         .oneOf([Yup.ref("password")], "Password's not match")
         .required("REQUIRED!")
     }),
+
     onSubmit: values => {
       console.log(values)
       axios.post('http://localhost:8080/registration', values)
         .then((response) => {
           console.log(response.data);
-          setAdddata()
+          setAdddata(response.data)
         })
         .catch((error) => {
           console.log(error);
@@ -151,8 +153,8 @@ export default function Registration() {
                         placeholder='Pincode'
                         name="pincode"
                         value={Formik.values.pincode}
-                        pattern="[0-9]{6}"  // Allow only numbers and enforce a 6-digit pincode
-                        maxLength="6"       // Set maximum length to 6
+                        pattern="[0-9]{6}"
+                        maxLength="6"
                         title="Pincode must be a 6-digit number"
                       />
                       <span className="focus-input100"></span>

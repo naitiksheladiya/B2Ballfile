@@ -6,7 +6,7 @@ import Forgetpasswrod from './Forgetpasswrod';
 import Adduser from './Adduser';
 import Sidebar from './Sidebar';
 import Catalog from './catalog';
- 
+
 import Dashboard from './Dashbord';
 
 export default function App() {
