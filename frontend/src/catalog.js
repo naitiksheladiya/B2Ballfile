@@ -91,7 +91,7 @@ export default function Catalog() {
                         {/* <label htmlFor="category">CATEGORY : </label> */}
                         <div className='wrap-input100 validate-input'>
                             <select className="input100" id="category" name="category" onChange={handleCategoryChange} value={selectedCategory}>
-                                <option value="">Select a category</option>
+                                <option value="">Select a Category</option>
                                 <option value="ROUNDNACK">ROUND NACK</option>
                                 <option value="POLO">POLO</option>
                                 <option value="V-NACK">V-NACK</option>
@@ -110,7 +110,7 @@ export default function Catalog() {
 
                         <div className='wrap-input100 validate-input'>
                             <select className="input100" id="color" name="color" onChange={handleColorChange} value={selectedColor}>
-                                <option value="">Select a color</option>
+                                <option value="">Select a Color</option>
                                 <option value="RED">RED</option>
                                 <option value="BLUE">BLUE</option>
                                 <option value="GREEN">GREEN</option>
@@ -128,7 +128,7 @@ export default function Catalog() {
                         </div>
 
                         <div className='wrap-input100 validate-input'>
-                            <input type="file" className="input100" id="image" name="image" accept="image/*" onChange={handleImageChange} />
+                            <input type="file" className="input100 imagecen" id="image" name="image" accept="image/*" onChange={handleImageChange} />
                             <span className="focus-input100"></span>
                         </div>
 

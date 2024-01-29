@@ -9,6 +9,11 @@
      padding: 2px;
  }
 
+ .imagecen {
+     align-items: center;
+     margin-top: 10px;
+ }
+
  .imagesize {
      height: 150px;
  }
