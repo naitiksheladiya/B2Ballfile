@@ -6,7 +6,7 @@ import Forgetpasswrod from './Forgetpasswrod';
 import Adduser from './Adduser';
 import Sidebar from './Sidebar';
 import Catalog from './catalog';
-
+import Products from './Products';
 import Dashboard from './Dashbord';
 
 export default function App() {
@@ -20,7 +20,7 @@ export default function App() {
           <Route path="adduser" element={<Adduser />} />
           <Route path="s" element={<Sidebar />} />
           <Route path="catalog" element={<Catalog />} />
-
+          <Route path="products" element={<Products />} />
           <Route path="d" element={<Dashboard />} />
 
         </Routes>

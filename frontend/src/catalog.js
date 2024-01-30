@@ -3,6 +3,9 @@ import '../src/css/catalog.css';
 import React, { useState, useEffect } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function Catalog() {
     const [businessName, setBusinessName] = useState('');
@@ -13,6 +16,11 @@ export default function Catalog() {
     const [selectedColorsList, setSelectedColorList] = useState([]);// State to store selected color
     const [selectedImage, setSelectedImage] = useState(null); // State to store selected image file
     const [imageUrl, setImageUrl] = useState(''); // State to store the URL of the selected image
+
+
+    useEffect(() => {
+        // You can perform any additional logic here when businessName or editorData changes
+    }, [businessName, editorData, selectedCategory, selectedColor, selectedImage]);
 
     const handleReady = (editor) => {
         console.log('Editor is ready to use!', editor);
@@ -54,9 +62,21 @@ export default function Catalog() {
         reader.readAsDataURL(file);
     };
 
-    useEffect(() => {
-        // You can perform any additional logic here when businessName or editorData changes
-    }, [businessName, editorData, selectedCategory, selectedColor, selectedImage]);
+    const handleRemoveCategory = (indexToRemove) => {
+        setSelectedCategoriesList(selectedCategoriesList.filter((_, index) => index !== indexToRemove));
+    };
+
+    const handleRemoveColor = (indexToRemove) => {
+        setSelectedColorList(selectedColorsList.filter((_, index) => index !== indexToRemove));
+    };
+
+    const navigate = useNavigate();
+    const handleSubmit = () => {
+        navigate("/products");
+    };
+
+
+
 
     return (
         <>
@@ -99,14 +119,18 @@ export default function Catalog() {
                             </select>
                             <span className="focus-input100"></span>
                         </div>
+
                         <div>
-                            {/* <p >Selected Categories:</p> */}
                             <ul className="selected-categories">
                                 {selectedCategoriesList.map((category, index) => (
-                                    <li className='lidecore' key={index}>{category}</li>
+                                    <li className='lidecore' key={index}>
+                                        {category}
+                                        <button className='close' onClick={() => handleRemoveCategory(index)}>x</button>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
+
 
                         <div className='wrap-input100 validate-input'>
                             <select className="input100" id="color" name="color" onChange={handleColorChange} value={selectedColor}>
@@ -122,7 +146,10 @@ export default function Catalog() {
                             {/* <p>Selected Color</p> */}
                             <ul className="selected-categories">
                                 {selectedColorsList.map((color, index) => (
-                                    <li className='lidecore' key={index}>{color}</li>
+                                    <li className='lidecore' key={index}>
+                                        {color}
+                                        <button className='close' onClick={() => handleRemoveColor(index)}>x</button>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
@@ -139,7 +166,7 @@ export default function Catalog() {
                         )}
 
                         <div className="container-login100-form-btn">
-                            <button className="login100-form-btn_confrom01 subtext">
+                            <button className="login100-form-btn_confrom01 subtext" onClick={handleSubmit}>
                                 SUBMIT
                             </button>
                         </div>

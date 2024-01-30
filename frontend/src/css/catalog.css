@@ -14,8 +14,16 @@
      margin-top: 10px;
  }
 
+ .close {
+     margin-left: 5px;
+     color: gray;
+     position: relative;
+     top: -10px;
+ }
+
  .imagesize {
      height: 110px;
+     margin-left: 24px;
  }
 
  .selected-categories {
