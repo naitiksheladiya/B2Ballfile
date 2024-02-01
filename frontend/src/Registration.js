@@ -9,10 +9,12 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 export default function Registration() {
 
   const [adddata, setAdddata] = useState([])
+  const navigate = useNavigate();
 
 
   const Formik = useFormik({
@@ -34,7 +36,7 @@ export default function Registration() {
     validationSchema: Yup.object({
       fname: Yup.string().required(" REQUIRED!"),
       lname: Yup.string().required(" REQUIRED!"),
-      email: Yup.string().email("Invalid email format").required(" REQUIRED!"),
+      email: Yup.string().email("Invalid email format").required(" REQUIRED!").matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g, "email is not valid"),
       phone: Yup.string().required('REQUIRED!')
         .matches(/^\d{10}$/, 'Contact number must be a valid 10-digit number'),
       Company: Yup.string().required("REQUIRED!"),
@@ -55,12 +57,23 @@ export default function Registration() {
       console.log(values)
       axios.post('http://localhost:8080/registration', values)
         .then((response) => {
-          console.log(response.data);
+          console.log(response.data)
           setAdddata(response.data)
+          if (response.data.email == values.email) {
+            localStorage.setItem('id', adddata._id)
+            toast.success("successfully")
+            navigate('/login')
+          } else {
+            toast.error("email is all ready add")
+          }
+
         })
         .catch((error) => {
           console.log(error);
+
         });
+
+
     }
 
   });
@@ -256,6 +269,7 @@ export default function Registration() {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </>
   )
 }
