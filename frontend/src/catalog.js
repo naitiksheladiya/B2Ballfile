@@ -11,6 +11,8 @@ const Catalog = () => {
     const navigate = useNavigate();
     const [selectcategory, setSelectCategory] = useState([]);
     const [selectedColors, setSelectedColors] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null);
+
 
 
     const handleSubmit = (values, { setSubmitting }) => {
@@ -34,6 +36,17 @@ const Catalog = () => {
     ]
     const handleColorChange = (selectedOption) => {
         setSelectedColors(selectedOption);
+    };
+
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setSelectedImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     return (
@@ -80,9 +93,7 @@ const Catalog = () => {
                                     <span className="focus-input100"></span>
                                 </div>
 
-                                <div>
-                                    <input type="text" name='category' />
-                                </div>
+
                                 <div className='wrap-input100 validate-input'>
                                     <Select
                                         className="input100"
@@ -117,10 +128,31 @@ const Catalog = () => {
                                 </div> */}
 
 
-                                <div className='wrap-input100 validate-input'>
+                                {/* <div className='wrap-input100 validate-input'>
                                     <Field type="file" className="input100 imagecen" id="image" name="image" accept="image/*" />
                                     <span className="focus-input100"></span>
+                                </div> */}
+
+
+                                <div className='wrap-input100 validate-input'>
+                                    <Field
+                                        type="file"
+                                        id="image"
+                                        name="image"
+                                        className='input100 imagecen'
+                                        onChange={handleImageChange}
+                                        accept="image/*"
+                                    />
+                                    <span className="focus-input100"></span>
                                 </div>
+
+                                {
+                                    selectedImage && (
+                                        <div className="selected-image ">
+                                            <img src={selectedImage} alt="Selected" className="preview-image imagesize" />
+                                        </div>
+                                    )
+                                }
 
 
                                 <div className="container-login100-form-btn">

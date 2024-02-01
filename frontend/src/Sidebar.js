@@ -6,6 +6,8 @@ import { MdLibraryBooks } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoBarChartSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
+import { BiSolidCategoryAlt } from "react-icons/bi";
+import { IoColorPalette } from "react-icons/io5";
 
 
 const YourComponent = () => {
@@ -44,6 +46,22 @@ const YourComponent = () => {
                                                                 </i>
                                                                 <span className="link">Add User</span>
                                                         </a>
+                                                        <a href="category" className="nav-link boderr">
+                                                                <i className="bx bx-cog icon">
+                                                                        {isNavbarOpen ? <BiSolidCategoryAlt />
+                                                                                : <BiSolidCategoryAlt />
+                                                                        }
+                                                                </i>
+                                                                <span className="link">Category</span>
+                                                        </a>
+                                                        <a href="color" className="nav-link boderr">
+                                                                <i className="bx bx-cog icon">
+                                                                        {isNavbarOpen ? <IoColorPalette />
+                                                                                : <IoColorPalette />
+                                                                        }
+                                                                </i>
+                                                                <span className="link">Color</span>
+                                                        </a>
                                                         <a href="catalog" className="nav-link boderr">
                                                                 <i className="bx bx-cog icon">
                                                                         {isNavbarOpen ? <MdLibraryBooks />
@@ -69,14 +87,7 @@ const YourComponent = () => {
                                                                 <span className="link"> DashBord</span>
                                                         </a>
 
-                                                        {/* <a href="#" className="nav-link">
-                                                                <i className="bx bx-cog icon">
-                                                                        <Link   to="/profile">
-                                                                                {isNavbarOpen ? <FaUser /> : <FaUser />}
-                                                                        </Link>
-                                                                </i>
-                                                                <span className="link">Settings</span>
-                                                        </a> */}
+
                                                 </ul>
 
                                                 <div className="bottom-content">

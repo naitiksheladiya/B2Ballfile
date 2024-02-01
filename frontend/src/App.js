@@ -6,6 +6,8 @@ import Forgetpasswrod from './Forgetpasswrod';
 import Adduser from './Adduser';
 import Sidebar from './Sidebar';
 import Catalog from './catalog';
+import Category from './category';
+import Color from './color';
 import Products from './Products';
 import Dashboard from './Dashbord';
 
@@ -20,6 +22,8 @@ export default function App() {
           <Route path="adduser" element={<Adduser />} />
           <Route path="s" element={<Sidebar />} />
           <Route path="catalog" element={<Catalog />} />
+          <Route path="category" element={<Category />} />
+          <Route path="color" element={<Color />} />
           <Route path="products" element={<Products />} />
           <Route path="d" element={<Dashboard />} />
 
