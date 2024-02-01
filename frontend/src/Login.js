@@ -6,13 +6,15 @@ import googleImage from './images/google.png';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
 
   const [logindata, setLogindata] = useState([])
 
+  const navigate = useNavigate();
 
 
 
@@ -33,7 +35,13 @@ export default function Login() {
       axios.post('http://localhost:8080/login', values)
         .then((response) => {
           console.log(response.data);
+          if (response.data == 'something went wrong') {
+            toast.error(response.data)
 
+          } else {
+            toast.success(response.data)
+            navigate('/s')
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -100,6 +108,7 @@ export default function Login() {
           </div>
         </div>
       </div >
+      <ToastContainer />
     </div >
   );
 }

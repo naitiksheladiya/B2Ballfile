@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 
+
 const userschema = mongoose.Schema({
       fname: { type: String, require: true },
       lname: { type: String, require: true },
-      email: { type: String, require: true, unique: true },
+      email: { type: String, unique: true, require: true },
       phone: { type: Number, require: true },
       Company: { type: String, require: true },
       address: { type: String, require: true },
@@ -13,7 +14,7 @@ const userschema = mongoose.Schema({
       country: { type: String, require: true },
       password: { type: String, require: true },
       confirmPassword: { type: String, require: true },
-      createdata: { type: Date, require: Date() }
+      createdata: { type: Date, require: Date.now }
 })
 
 const model = mongoose.model('registration', userschema)
@@ -25,6 +26,7 @@ const adddata = async (data) => {
             const asd = await userdata.save()
             console.log(asd)
             return (asd)
+
       } catch (error) {
             console.log(error)
             return (error)
@@ -38,7 +40,6 @@ const checkdata = async (data) => {
             const logindata = await model.find({ $and: [{ email: data.email }, { password: data.password }] })
             console.log(logindata)
             if (logindata && logindata.length > 0) {
-
                   return 'login successfull'
             } else {
                   return 'something went wrong'
