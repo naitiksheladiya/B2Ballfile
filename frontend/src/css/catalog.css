@@ -7,6 +7,14 @@
      font-size: 15px !important;
  }
 
+ .categoryform {
+     min-height: 57vh !important;
+ }
+
+ .colorrrr {
+     height: 40px !important;
+ }
+
  .ok {
      border: 1px solid black;
      margin-left: 10px;
