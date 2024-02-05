@@ -64,14 +64,28 @@ export default function Viewuser() {
             options: {
                 filter: true,
                 sort: false,
+                customBodyRender: () => {
+                    return (
+                        <button style={{ border: '1px solid black', padding: '5px' }} onClick={() => console.log('Edit')}>
+                            Edit
+                        </button>
+                    )
+                }
             }
         },
         {
             name: "delete",
-            label: "delete",
+            label: "Delete",
             options: {
                 filter: true,
                 sort: false,
+                customBodyRender: () => {
+                    return (
+                        <button style={{ border: '1px solid black', padding: '5px' }} onClick={() => console.log('Delete')}>
+                            Delete
+                        </button>
+                    )
+                }
             }
         },
     ];
