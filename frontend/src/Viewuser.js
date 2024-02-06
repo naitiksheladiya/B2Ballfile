@@ -2,12 +2,20 @@ import React, { useEffect, useState } from "react"
 import MUIDataTable from "mui-datatables";
 import UserLayout from "./Layout";
 import axios from 'axios';
-
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
 
 
 export default function Viewuser() {
 
     const [data, setData] = useState([])
+
+    const muiCache = createCache({
+        key: 'mui-datatables',
+        prepend: true
+    })
+
     useEffect(() => {
         getdata();
     }, [])
@@ -23,6 +31,7 @@ export default function Viewuser() {
 
             });
     }
+    
     const columns = [
         {
             name: "fname",
@@ -100,12 +109,17 @@ export default function Viewuser() {
 
             <UserLayout />
             <div className='layber'>
-                <MUIDataTable
-                    title={"USER LIST"}
-                    data={data}
-                    columns={columns}
-                    options={options}
-                />
+
+                <CacheProvider value={muiCache} >
+                    <ThemeProvider theme={createTheme()}>
+                        <MUIDataTable
+                            title={"USER LIST"}
+                            data={data}
+                            columns={columns}
+                            options={options}
+                        />
+                    </ThemeProvider>
+                </CacheProvider >
             </div>
         </>
     )

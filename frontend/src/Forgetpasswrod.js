@@ -23,7 +23,7 @@ export default function Forgetpasswrod() {
     <>
 
       {forr == "for" && <div className='main'>
-        <div className='box_ps'> 
+        <div className='box_ps'>
           <form className="login100-form_011 validate-form">
             <span className="login100-form-title_034 p-b-43">
               FORGETPASSWORD
@@ -50,18 +50,32 @@ export default function Forgetpasswrod() {
             <div class="card-body p-5 text-center">
 
               <p>Your code was sent to you via email</p>
+              <div className='otp-work'>
 
-              <div class="otp-field mb-4">
-
-                <input type="number" />
-                <span className="focus-input100"></span>
-                <input type="number" />
-                <input type="number" />
-                <input type="number" />
-                <input type="number" />
-                <input type="number" />
+                <OtpInput
+                  value={otp}
+                  onChange={setOtp}
+                  numInputs={4}
+                  renderSeparator={<span style={{ width: '8px' }}></span>}
+                  renderInput={(props) => <input {...props} />}
+                  isInputNum={true}
+                  shouldAutoFocus={true}
+                  inputStyle={{
+                    border: '1px solid transparent',
+                    borderRadius: '8px',
+                    width: '54px',
+                    height: '54px',
+                    fontSize: '12px',
+                    color: '#000',
+                    fontWeight: '400',
+                    caretColor: 'blue',
+                  }}
+                  focusStyle={{
+                    border: '1px solid #CFD3DB',
+                    outline: 'none',
+                  }}
+                />
               </div>
-
 
               <div className="container-login100-form-btn">
                 <button className="login100-form-btn_01" onClick={otpverify}>
