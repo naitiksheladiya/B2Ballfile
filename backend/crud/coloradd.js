@@ -12,7 +12,7 @@ const addedcolor = async (data) => {
         const colorcode = new colormodel(data);
         const asd = colorcode.save()
         console.log(asd)
-        return asd
+        return (asd)
 
     } catch (error) {
         console.log(error)
@@ -20,4 +20,15 @@ const addedcolor = async (data) => {
     }
 }
 
-export{addedcolor}
+const getcolor = async (data) => {
+    try {
+        const colordd = await colormodel.find();
+
+        console.log(colordd)
+        return colordd
+    } catch (error) {
+        console.log(error)
+        return (error)
+    }
+}
+export { addedcolor, getcolor }

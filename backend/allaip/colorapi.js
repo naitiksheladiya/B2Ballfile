@@ -1,5 +1,5 @@
 import express from 'express'
-import { addedcolor } from '../crud/coloradd.js'
+import { addedcolor, getcolor } from '../crud/coloradd.js'
 
 
 const col = express.Router()
@@ -9,4 +9,8 @@ col.post('/color', async (req, res) => {
     res.send(colorcd)
 })
 
+col.get('/catelog', async (req, res) => {
+    const colorgets = await getcolor()
+    res.send(colorgets)
+})
 export default col;
