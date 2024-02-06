@@ -49,7 +49,9 @@ export default function Login() {
     }
   })
 
-
+  const forgetpassword = () => {
+    navigate('/forgetpassword')
+  }
 
 
   return (
@@ -76,9 +78,9 @@ export default function Login() {
             </div>
             <div className="flex-sb-m w-full p-t-3 p-b-32">
               <div>
-                <a href="#" className="txt1">
+                <button onClick={forgetpassword} className="txt1">
                   Forgot Password?
-                </a>
+                </button>
               </div>
             </div>
             <div className="container-login100-form-btn">

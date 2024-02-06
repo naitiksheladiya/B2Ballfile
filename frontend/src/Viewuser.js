@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react"
 import MUIDataTable from "mui-datatables";
 import UserLayout from "./Layout";
 import axios from 'axios';
+import '../src/css/viweuser.css'
+import { CiEdit } from "react-icons/ci";
+import { MdDelete } from "react-icons/md";
 
 
 
@@ -66,8 +69,8 @@ export default function Viewuser() {
                 sort: false,
                 customBodyRender: () => {
                     return (
-                        <button style={{ border: '1px solid black', padding: '5px' }} onClick={() => console.log('Edit')}>
-                            Edit
+                        <button className="button_click" onClick={() => console.log('Edit')}>
+                            <CiEdit />
                         </button>
                     )
                 }
@@ -81,8 +84,8 @@ export default function Viewuser() {
                 sort: false,
                 customBodyRender: () => {
                     return (
-                        <button style={{ border: '1px solid black', padding: '5px' }} onClick={() => console.log('Delete')}>
-                            Delete
+                        <button className="button_click" onClick={() => console.log('Delete')}>
+                            <MdDelete />
                         </button>
                     )
                 }
