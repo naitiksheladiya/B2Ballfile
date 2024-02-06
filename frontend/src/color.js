@@ -61,7 +61,7 @@ const Color = () => {
                                 type="text"
                                 id="selectedColor"
                                 name="selectedColor"
-                                placeholder='Enter color name'
+                                placeholder='ENTER COLOR'
                                 value={formik.values.selectedColor}
                                 onChange={formik.handleChange}
                                 style={{ height: '40px', width: '100%' }} // Adjust width as needed
