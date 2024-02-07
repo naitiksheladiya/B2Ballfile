@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import nodemailer from 'nodemailer'
 
 
 const userschema = mongoose.Schema({
@@ -50,4 +51,46 @@ const checkdata = async (data) => {
       }
 }
 
-export { adddata, checkdata }
+const checkdata2 = async (data) => {
+      console.log(data)
+      try {
+            const forgetpass = await model.find({ email: data.email })
+            console.log(forgetpass)
+            if (forgetpass && forgetpass.length > 0) {
+                  try {
+                        const asd = new model(data)
+                        const result = await asd.save()
+
+                        const transporter = nodemailer.createTransport({
+                              host: "smtp.gmail.com",
+                              port: 465,
+                              secure: true,
+                              auth: {
+                                    user: 'sheladiyanaitik502@gmail.com',
+                                    pass: 'wwmfkxusbvopirib'
+                              },
+                        });
+                        const info = await transporter.sendMail({
+                              from: '"Maddison Foo Koch 👻" <sheladiyanaitik502@gmail.com>', // sender address
+                              to: data.email, // list of receivers
+                              subject: "Hello ✔", // Subject line
+                              text: data.otp, // plain text body
+                              // html body
+                        });
+                        console.log(result)
+
+                  }
+                  catch (error) {
+                        console.log(error)
+                        return (error)
+                  }
+                  return 'email  successfull'
+            } else {
+                  return 'something went wrong'
+            }
+      } catch (error) {
+            console.log(error)
+            return error
+      }
+}
+export { adddata, checkdata, checkdata2 }

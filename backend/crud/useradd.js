@@ -10,7 +10,6 @@ const adduserschema = mongoose.Schema({
     password: { type: String, require: true },
     confirmPassword: { type: String, require: true },
     owenerid: { type: String, require: true }
-
 })
 
 
@@ -32,7 +31,7 @@ const adddata = async (data) => {
 
 const getdata = async (data) => {
     try {
-        const asd = await adduser.find(data)
+        const  asd = await adduser.find(data)
         console.log(asd)
         return asd
     } catch (error) {
