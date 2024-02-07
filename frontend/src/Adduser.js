@@ -3,22 +3,15 @@ import * as Yup from 'yup';
 import { useFormik, resetForm } from 'formik';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 import UserLayout from './Layout';
 
 export default function Adduser() {
-  const [id, setId] = useState('')
-  useEffect(() => {
-    const id = localStorage.getItem('id')
-    setId(id)
-    console.log(id)
-  }, [])
-
-  const navigate = useNavigate();
+  const id = localStorage.getItem('id') ? localStorage.getItem('id') : ''
+  
   const Formik = useFormik({
 
     initialValues: {
-      fastname: "",
+      fname: "",
       lname: "",
       email: "",
       phone: "",
@@ -26,12 +19,12 @@ export default function Adduser() {
       address: "",
       password: "",
       confirmPassword: "",
-      owanrid: id,
+      owenerid: id,
 
     },
 
     validationSchema: Yup.object({
-      fastname: Yup.string().required(" REQUIRED!"),
+      fname: Yup.string().required(" REQUIRED!"),
       lname: Yup.string().required(" REQUIRED!"),
       email: Yup.string().email("Invalid email format").required(" REQUIRED!").matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g, "email is not valid"),
       phone: Yup.string().required('REQUIRED!')
@@ -53,7 +46,7 @@ export default function Adduser() {
           console.log(response.data);
           if (response.data.email == values.email) {
             toast.success("successfully")
-            // navigate('/login')
+
           } else {
             toast.error("email is all ready add")
           }
@@ -63,8 +56,6 @@ export default function Adduser() {
 
         });
     }
-
-
   })
   return (
     <>
@@ -81,11 +72,11 @@ export default function Adduser() {
             <div className="row">
               <div className="col-md-6">
                 <div className="wrap-input100 validate-input" data-validate="First Name is required">
-                  <input className="input100" type="text" value={Formik.values.fastname} onChange={Formik.handleChange} placeholder="First Name" name="fastname" />
+                  <input className="input100" type="text" value={Formik.values.fname} onChange={Formik.handleChange} placeholder="First Name" name="fname" />
                   <span className="focus-input100"></span>
                 </div>
-                {Formik.errors.fastname && Formik.touched.fastname && (
-                  <p className='error_massage'>{Formik.errors.fastname}</p>
+                {Formik.errors.fname && Formik.touched.fname && (
+                  <p className='error_massage'>{Formik.errors.fname}</p>
                 )}
               </div>
 

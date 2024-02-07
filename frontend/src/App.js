@@ -10,6 +10,7 @@ import Category from './category';
 import Color from './color';
 import Products from './Products';
 import Dashboard from './Dashbord';
+import Viewuser from './Viewuser';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="login" element={<Login />} />
           <Route path="forgetpassword" element={<Forgetpasswrod />} />
           <Route path="adduser" element={<Adduser />} />
+          <Route path="viewuser" element={<Viewuser />} />
           <Route path="s" element={<Sidebar />} />
           <Route path="catalog" element={<Catalog />} />
           <Route path="category" element={<Category />} />

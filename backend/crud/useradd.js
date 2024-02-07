@@ -5,10 +5,11 @@ const adduserschema = mongoose.Schema({
     lname: { type: String, require: true },
     email: { type: String, unique: true, require: true },
     phone: { type: Number, require: true },
-    business: { type: String, require: true },
+    businessname: { type: String, require: true },
     address: { type: String, require: true },
     password: { type: String, require: true },
     confirmPassword: { type: String, require: true },
+    owenerid: { type: String, require: true }
 
 })
 
@@ -28,4 +29,16 @@ const adddata = async (data) => {
     }
 }
 
-export { adddata }
+
+const getdata = async (data) => {
+    try {
+        const asd = await adduser.find(data)
+        console.log(asd)
+        return asd
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}
+
+export { adddata, getdata }
