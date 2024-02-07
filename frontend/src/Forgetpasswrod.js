@@ -10,18 +10,20 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function Forgetpasswrod() {
+
   const [otp, setOtp] = useState('');
   // const [genter, setGernet] = useState('')
   const [forr, setForr] = useState("for")
 
   const navigate = useNavigate();
 
-  const otpgenret = Math.floor(Math.random() * 10000).toString()
+  let otpgenreter = Math.floor(Math.random() * 10000).toString()
+
 
   const Formik = useFormik({
     initialValues: {
       email: "",
-      otp: otpgenret,
+      otp: otpgenreter
     },
 
     validationSchema: Yup.object({
@@ -32,13 +34,12 @@ export default function Forgetpasswrod() {
       axios.post('http://localhost:8080/forgetpassword', values)
       console.log(values)
         .then((response) => {
-          console.log(response.data);
-
+          console.log(values);
           if (response.data == 'something went wrong') {
             toast.error(response.data)
           } else {
             toast.success(response.data)
-            setForr("otp")
+            setForr("otp") 
           }
         })
         .catch((error) => {
