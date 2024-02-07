@@ -20,16 +20,17 @@ const Catalog = () => {
         getdata();
     }, [])
 
-
-    useEffect(() => {
-        // Store selected color in local storage
-        localStorage.setItem('selectedColor', JSON.stringify(color));
-    }, [color]);
-
-    useEffect(() => {
-        // Store selected color in local storage
-        localStorage.setItem('selectedCatelog', JSON.stringify(category));
-    }, [category]);
+// 
+//     useEffect(() => {
+//         // Store selected color in local storage
+//         localStorage.setItem('selectedColor', JSON.stringify(color));
+//     }, [color]);
+// 
+//     useEffect(() => {
+//         // Store selected color in local storage
+//         localStorage.setItem('selectedCatelog', JSON.stringify(category));
+//         console.log('first')
+//     }, [category]);
 
     const getdata = () => {
         const storedData = localStorage.getItem('catalogData');
@@ -72,12 +73,12 @@ const Catalog = () => {
                 console.log(responsed.data);
                 responsed.data.forEach(item => {
                     let obj = {
-                        lebel: item.selectedCategory,
+                        label: item.selectedCategory,
                         value: item._id
                     }
                     newCatelog.push(obj)
                 });
-                
+
                 setCategory(newCatelog);
                 console.log(newCatelog)
                 localStorage.setItem('catalogData', JSON.stringify(newCatelog));
