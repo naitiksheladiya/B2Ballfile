@@ -31,7 +31,7 @@ const adddata = async (data) => {
 
 const getdata = async (data) => {
     try {
-        const  asd = await adduser.find(data)
+        const asd = await adduser.find(data)
         console.log(asd)
         return asd
     } catch (error) {
@@ -40,4 +40,14 @@ const getdata = async (data) => {
     }
 }
 
-export { adddata, getdata }
+const deletedata = async (data) => {
+    try {
+        const datadelete = await adduser.findByIdAndDelete(data)
+        console.log(datadelete)
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}
+
+export { adddata, getdata, deletedata }
