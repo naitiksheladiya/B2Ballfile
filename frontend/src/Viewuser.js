@@ -35,7 +35,25 @@ export default function Viewuser() {
 
             });
     }
-    
+
+
+    const handaledit = (value) => {
+        console.log(value)
+    }
+    const handaldelete = (value) => {
+        console.log(value)
+        let obj = { id: value }
+        axios.post('http://localhost:8080/delete', obj)
+            .then((response) => {
+                console.log(response)
+                getdata()
+            })
+            .catch((error) => {
+                console.log(error);
+
+            });
+    }
+
     const columns = [
         {
             name: "fname",
@@ -72,14 +90,14 @@ export default function Viewuser() {
         },
 
         {
-            name: "edit",
+            name: "_id",
             label: "edit",
             options: {
                 filter: true,
                 sort: false,
-                customBodyRender: () => {
+                customBodyRender: (value) => {
                     return (
-                        <button className="button_click" onClick={() => console.log('Edit')}>
+                        <button className="button_click" onClick={() => handaledit(value)}>
                             <CiEdit />
                         </button>
                     )
@@ -87,14 +105,14 @@ export default function Viewuser() {
             }
         },
         {
-            name: "delete",
+            name: "_id",
             label: "Delete",
             options: {
                 filter: true,
                 sort: false,
-                customBodyRender: () => {
+                customBodyRender: (value) => {
                     return (
-                        <button className="button_click" onClick={() => console.log('Delete')}>
+                        <button className="button_click" onClick={() => handaldelete(value)}>
                             <MdDelete />
                         </button>
                     )
@@ -102,9 +120,6 @@ export default function Viewuser() {
             }
         },
     ];
-
-
-
     const options = {
         filterType: 'checkbox',
     };
