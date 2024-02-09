@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import './css/forgetpassword.css'
-import './css/otp.css'
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import React, { useState } from 'react';
+import './css/forgetpassword.css';
+import './css/otp.css';
 import OtpInput from 'react-otp-input';
 import { ToastContainer, toast } from 'react-toastify';
 import { useFormik } from 'formik';
@@ -10,35 +9,14 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
-
 export default function Forgetpasswrod() {
 
   const [otp, setOtp] = useState('');
+  // const [genter, setGernet] = useState('')
   const [forr, setForr] = useState("for")
 
   let otpgenreter = Math.floor(Math.random() * 10000).toString()
 
-  const otpverify = () => {
-
-    let valueee = {
-      otp: otp
-    }
-
-    axios.post('http://localhost:8080/otp', valueee)
-      .then((response) => {
-        console.log(valueee);
-        if (response.data == 'something went wrong') {
-          toast.error(response.data)
-        } else {
-          toast.success(response.data)
-          // setForr("confrom")
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-  }
   const Formik = useFormik({
     initialValues: {
       email: "",
@@ -51,6 +29,7 @@ export default function Forgetpasswrod() {
     }),
     onSubmit: values => {
       axios.post('http://localhost:8080/forgetpassword', values)
+      console.log(values)
         .then((response) => {
           console.log(values);
           if (response.data == 'something went wrong') {
@@ -65,7 +44,6 @@ export default function Forgetpasswrod() {
         });
     }
   })
-
   return (
     <>
       {forr == "for" && <div className='main'>
@@ -87,8 +65,8 @@ export default function Forgetpasswrod() {
               </button>
             </div>
           </form>
-          <ToastContainer />
         </div>
+        <ToastContainer />
       </div>}
 
       {forr == "otp" && <div className='main'>
@@ -115,7 +93,7 @@ export default function Forgetpasswrod() {
                     borderRadius: '8px',
                     width: '54px',
                     height: '54px',
-                    fontSize: '12px',
+                    fontSize: '18px',
                     color: '#000',
                     fontWeight: '400',
                     caretColor: 'blue',
@@ -129,6 +107,7 @@ export default function Forgetpasswrod() {
 
               <div className="container-login100-form-btn">
                 <button className="login100-form-btn_01" type='submit' onClick={otpverify}>
+                {/* <button className="login100-form-btn_01"> */}
                   VERIFY
                 </button>
               </div>
@@ -136,12 +115,11 @@ export default function Forgetpasswrod() {
                 Didn't receive code? <a href="">Request again</a>
               </p>
             </div>
-
           </form>
         </div>
       </div>}
-      {forr == "confrom" &&
 
+      {forr == "confrom" &&
         <div className='main'>
           <div className='box_ps'>
             <form className="login100-form_011 validate-form">
