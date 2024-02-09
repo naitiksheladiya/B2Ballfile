@@ -17,10 +17,7 @@ export default function Forgetpasswrod() {
   const [forr, setForr] = useState("for")
   const [isloding, setIsloding] = useState(false)
 
-  const navigate = useNavigate();
-
   let otpgenreter = Math.floor(Math.random() * 10000).toString()
-
 
   const Formik = useFormik({
     initialValues: {
@@ -42,7 +39,10 @@ export default function Forgetpasswrod() {
             toast.error(response.data)
           } else {
             toast.success(response.data)
+<<<<<<< HEAD
             setIsloding(false)
+=======
+>>>>>>> f0cd154039c3ee847de5361ee28d6ba0c1baa179
             setForr("otp")
           }
         })
@@ -53,7 +53,6 @@ export default function Forgetpasswrod() {
   })
   return (
     <>
-
       {forr == "for" && <div className='main'>
         <div className='box_ps'>
           <form className="login100-form_011 validate-form" onSubmit={Formik.handleSubmit}>
@@ -145,8 +144,23 @@ export default function Forgetpasswrod() {
                   Didn't receive code? <a href="">Request again</a>
                 </p>
               </div>
+<<<<<<< HEAD
             </form>
           </div>
+=======
+
+              <div className="container-login100-form-btn">
+                <button className="login100-form-btn_01">
+                {/* <button className="login100-form-btn_01"> */}
+                  VERIFY
+                </button>
+              </div>
+              <p class="resend text-muted mb-0">
+                Didn't receive code? <a href="">Request again</a>
+              </p>
+            </div>
+          </form>
+>>>>>>> f0cd154039c3ee847de5361ee28d6ba0c1baa179
         </div>
       }
 
