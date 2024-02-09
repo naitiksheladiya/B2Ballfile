@@ -106,7 +106,7 @@ export default function Forgetpasswrod() {
               </div>
 
               <div className="container-login100-form-btn">
-                <button className="login100-form-btn_01" type='submit' onClick={otpverify}>
+                <button className="login100-form-btn_01">
                 {/* <button className="login100-form-btn_01"> */}
                   VERIFY
                 </button>
