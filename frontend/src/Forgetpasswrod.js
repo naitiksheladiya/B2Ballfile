@@ -16,13 +16,28 @@ export default function Forgetpasswrod() {
   const [otp, setOtp] = useState('');
   const [forr, setForr] = useState("for")
 
-  const navigate = useNavigate();
-
   let otpgenreter = Math.floor(Math.random() * 10000).toString()
 
-
   const otpverify = () => {
-    setForr("confrom")
+
+    let valueee = {
+      otp: otp
+    }
+
+    axios.post('http://localhost:8080/otp', valueee)
+      .then((response) => {
+        console.log(valueee);
+        if (response.data == 'something went wrong') {
+          toast.error(response.data)
+        } else {
+          toast.success(response.data)
+          // setForr("confrom")
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
   }
   const Formik = useFormik({
     initialValues: {
@@ -42,7 +57,7 @@ export default function Forgetpasswrod() {
             toast.error(response.data)
           } else {
             toast.success(response.data)
-            setForr("otp") 
+            setForr("otp")
           }
         })
         .catch((error) => {
@@ -53,7 +68,6 @@ export default function Forgetpasswrod() {
 
   return (
     <>
-
       {forr == "for" && <div className='main'>
         <div className='box_ps'>
           <form className="login100-form_011 validate-form" onSubmit={Formik.handleSubmit}>
@@ -114,7 +128,7 @@ export default function Forgetpasswrod() {
               </div>
 
               <div className="container-login100-form-btn">
-                <button className="login100-form-btn_01" onClick={otpverify}>
+                <button className="login100-form-btn_01" type='submit' onClick={otpverify}>
                   VERIFY
                 </button>
               </div>
